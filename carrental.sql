@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 05, 2016 at 06:02 PM
+-- Generation Time: Oct 05, 2016 at 09:03 PM
 -- Server version: 10.1.16-MariaDB
--- PHP Version: 5.6.24
+-- PHP Version: 5.5.38
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -30,7 +30,8 @@ CREATE TABLE `car` (
   `ID` int(11) NOT NULL,
   `makeModel` varchar(100) NOT NULL,
   `carType` enum('economy','midsize','fullsize','suv','minivan','suv - large') NOT NULL,
-  `rate` decimal(10,2) NOT NULL
+  `rate` decimal(10,2) NOT NULL,
+  `location` enum('laval','ndg','westmont','doval') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -41,11 +42,24 @@ CREATE TABLE `car` (
 
 CREATE TABLE `customer` (
   `ID` int(11) NOT NULL,
-  `carID` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
   `email` varchar(200) NOT NULL,
+  `password` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `reservations`
+--
+
+CREATE TABLE `reservations` (
+  `ID` int(11) NOT NULL,
   `pickupDate` date NOT NULL,
-  `returnDate` date NOT NULL
+  `returnDate` date NOT NULL,
+  `totalPrice` decimal(10,2) NOT NULL,
+  `customerID` int(11) NOT NULL,
+  `carID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -62,7 +76,14 @@ ALTER TABLE `car`
 -- Indexes for table `customer`
 --
 ALTER TABLE `customer`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Indexes for table `reservations`
+--
+ALTER TABLE `reservations`
   ADD PRIMARY KEY (`ID`),
+  ADD KEY `customerID` (`customerID`),
   ADD KEY `carID` (`carID`);
 
 --
@@ -80,14 +101,20 @@ ALTER TABLE `car`
 ALTER TABLE `customer`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT for table `reservations`
+--
+ALTER TABLE `reservations`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- Constraints for dumped tables
 --
 
 --
--- Constraints for table `customer`
+-- Constraints for table `reservations`
 --
-ALTER TABLE `customer`
-  ADD CONSTRAINT `customer_ibfk_1` FOREIGN KEY (`carID`) REFERENCES `car` (`ID`);
+ALTER TABLE `reservations`
+  ADD CONSTRAINT `reservations_ibfk_1` FOREIGN KEY (`customerID`) REFERENCES `customer` (`ID`),
+  ADD CONSTRAINT `reservations_ibfk_2` FOREIGN KEY (`carID`) REFERENCES `car` (`ID`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

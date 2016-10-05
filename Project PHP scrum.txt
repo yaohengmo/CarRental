@@ -1,7 +1,7 @@
 10/05/2016
 1.What was done
 Domenic - created basic idex.php, registration page, login page and database.
-yao - 
+yao - Update database ,
 
 2. Today's expectation
 Domenic - complete working pages from above and start working on car options page
