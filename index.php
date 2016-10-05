@@ -13,16 +13,14 @@ $log = new Logger('main');
 $log->pushHandler(new StreamHandler('logs/everything.log', Logger::DEBUG));
 $log->pushHandler(new StreamHandler('logs/errors.log', Logger::ERROR));
 
-DB::$dbName = 'cp4724_carrental';
-DB::$user = 'cp4724_carrental';
-DB::$password = 'zWv%tp1=&5RH';
-DB::$host = 'ipd8.info';
+//DB::$dbName = 'cp4724_carrental';
+//DB::$user = 'cp4724_carrental';
+//DB::$password = 'zWv%tp1=&5RH';
+//DB::$host = 'ipd8.info';
 
-//DB::$dbName = 'carrental';
-//DB::$user = 'carrental';
-//DB::$password = 'AXtJCGMCxMAQ6eQV';
-
-// DB::$host = '127.0.0.1'; // sometimes needed on Mac OSX
+DB::$dbName = 'carrental';
+DB::$user = 'carRental';
+DB::$password = 'KjTzXheqPwP7Z4fT';
 DB::$error_handler = 'sql_error_handler';
 DB::$nonsql_error_handler = 'nonsql_error_handler';
 

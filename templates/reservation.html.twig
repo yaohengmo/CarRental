@@ -1,0 +1,37 @@
+{% extends "master.html.twig" %}
+
+{% block title %}Resevation{% endblock %}
+{% block head %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>   
+    $(document).ready(function() {
+        $('input[name=email]').keyup(function() {
+            $('#result').load('/emailexists/' + $(this).val());           
+            });
+        });
+        </script>
+    {% endblock %}
+{% block content %}
+            
+<h1>Reservation page</h1>
+
+{% if errorList %}
+    <ul>
+    {% for error in errorList %}
+        <li>{{ error }}</li>
+    {% endfor %}
+    </ul>
+{% endif %}
+
+<form method="post">
+    CAR TYPE: <input type="text" name="carType" value="{{v.carType}}"><br><br>
+    PICKUP DATE: <input type="date" name="pickupDate" value="{{v.pickupDate}}">
+    <span id="result"></span><br><br>
+    RUTURN DATE: <input type="date" name="returnDate" value="{{v.returnDate}}"><br><br>
+    
+    LOCATION: <input type="text" name="location" value="{{v.location}}"><br><br>
+    <input type="submit" value="RESERVE">
+</form>
+
+{% endblock %}
+    
