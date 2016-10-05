@@ -4,7 +4,8 @@ Domenic - created basic idex.php, registration page, login page and database.
 yao - 
 
 2. Today's expectation
-Domenic - complete working pages from above
+Domenic - complete working pages from above and start working on car options page
+Yao - book reservation page (home page)
 
 3. Need help
 Connecting to DB online
