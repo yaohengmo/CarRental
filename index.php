@@ -1,5 +1,6 @@
 <?php
 
+
 session_start();
 
 // enable on-demand class loader
@@ -19,8 +20,8 @@ $log->pushHandler(new StreamHandler('logs/errors.log', Logger::ERROR));
 //DB::$host = 'ipd8.info';
 
 DB::$dbName = 'carrental';
-DB::$user = 'carRental';
-DB::$password = 'KjTzXheqPwP7Z4fT';
+DB::$user = 'carrental';
+DB::$password = 'DLGbPGKfpby5FW5s';
 DB::$error_handler = 'sql_error_handler';
 DB::$nonsql_error_handler = 'nonsql_error_handler';
 
@@ -63,7 +64,7 @@ $app->get('/', function() use ($app) {
             array('sessionUser' => $_SESSION['user']));
 });
 $app->get('/emailexists/:email', function($email) use ($app, $log){
-    $user = DB::queryFirstRow("SELECT ID from customers WHERE email = %s", $email);
+    $user = DB::queryFirstRow("SELECT ID from customer WHERE email = %s", $email);
     if ($user){
         echo " Email already registered";
     }
@@ -90,7 +91,7 @@ $app->post('/register', function() use ($app, $log) {
         array_push($errorList, "Email does not look like a valid email");
         unset($valueList['email']);
     } else {
-        $user = DB::queryFirstRow("SELECT ID FROM customers WHERE email=%s", $email);        
+        $user = DB::queryFirstRow("SELECT ID FROM customer WHERE email=%s", $email);        
         if ($user) {
             array_push($errorList, "Email already registered");
             unset($valueList['email']);
@@ -111,8 +112,8 @@ $app->post('/register', function() use ($app, $log) {
         ));
     } else {
         // STATE 2: submission successful
-        DB::insert('customers', array(
-            'name' => $name, 'email' => $email, 'password' => hash('sha256',$pass1)
+        DB::insert('customer', array(
+            'name' => $name, 'email' => $email, 'password' => $pass1
         ));
         $id = DB::insertId();
         $log->debug(sprintf("User %s created", $id));
@@ -125,12 +126,28 @@ $app->get('/login', function() use ($app, $log) {
 $app->post('/login', function() use ($app, $log) {
     $email = $app->request->post('email');
     $pass = $app->request->post('pass');
-    $user = DB::queryFirstRow("SELECT * FROM customers WHERE email=%s", $email);    
+    $user = DB::queryFirstRow("SELECT * FROM customer WHERE email=%s", $email);    
     if (!$user) {
         $log->debug(sprintf("User failed for email %s from IP %s",
                     $email, $_SERVER['REMOTE_ADDR']));
         $app->render('login.html.twig', array('loginFailed' => TRUE));
-    } else {
+    } 
+    
+    else {
+        if ($user['password'] == $pass) {
+            // LOGIN successful
+            unset($user['password']);
+            $_SESSION['user'] = $user;
+            $log->debug(sprintf("User %s logged in successfuly from IP %s",
+                    $user['ID'], $_SERVER['REMOTE_ADDR']));
+            $app->render('login_success.html.twig');
+        } else {
+            $log->debug(sprintf("User failed for email %s from IP %s",
+                    $email, $_SERVER['REMOTE_ADDR']));
+            $app->render('login.html.twig', array('loginFailed' => TRUE));            
+        }
+    }
+        /*{
         // password MUST be compared in PHP because SQL is case-insenstive
         //if ($user['password'] == hash('sha256',$pass)) {
         //crypt bloatfish encryption
@@ -146,7 +163,7 @@ $app->post('/login', function() use ($app, $log) {
                     $email, $_SERVER['REMOTE_ADDR']));
             $app->render('login.html.twig', array('loginFailed' => TRUE));            
         }
-    }
+    }*/
 });
 
 
