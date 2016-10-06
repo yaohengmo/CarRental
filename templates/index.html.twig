@@ -8,7 +8,7 @@
 
 {% if sessionUser %}
     <p>Hello {{sessionUser.name}} ({{sessionUser.email}}).
-        You may <a href="/logout">logout</a>.</p>
+        You may <a href="/logout">logout</a> OR <a href="/reservation">BOOK YOUR CAR</a>.</p>
 {% else %}
 <p>You may <a href="/login">login</a> or <a href="/register">register</a>.</p>
 {% endif %}

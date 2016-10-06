@@ -166,6 +166,49 @@ $app->post('/login', function() use ($app, $log) {
     }*/
 });
 
+$app->get('/reservation', function() use ($app, $log) {
+    $app->render('reservation.html.twig');
+});
+// State 2: submission
+$app->post('/reservation', function() use ($app, $log) {
+    $carID = $app->request->post('carID');
+    $pickupDate = $app->request->post('pickupDate');
+    $returnDate = $app->request->post('returnDate');
+    $location = $app->request->post('location');
+    $valueList = array ( 'pickupDate' => $pickupDate,'returnDate' => $returnDate,'location' => $location);
+    // submission received - verify
+    $errorList = array();
+    
+    
+      $user = DB::queryFirstRow("SELECT ID FROM reservation WHERE carID=%s", $carID);        
+        if ($user) {
+            array_push($errorList, "Car already rent out");
+            unset($valueList['carID']);
+        }
+    
+   
+    //
+    if ($errorList) {
+        // STATE 3: submission failed        
+        $app->render('reservation.html.twig', array(
+            'errorList' => $errorList, 'v' => $valueList
+        ));
+    } else {
+        // STATE 2: submission successful
+        DB::insert('reservation', array(
+            'carID' => $carID, 'pickupDate' => $pickupDate, 'returnDate' => $returnDate
+        ));
+        $id = DB::insertId();
+        $log->debug(sprintf("User %s created", $id));
+        $app->render('reservation_success.html.twig');
+    }
+});
+
+$app->get('/logout', function() use ($app, $log) {
+    $_SESSION['user'] = array();
+    $app->render('logout_success.html.twig');
+});
+
 
 
 $app->run();
