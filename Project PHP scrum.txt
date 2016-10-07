@@ -9,3 +9,44 @@ Yao - book reservation page (home page)
 
 3. Need help
 Connecting to DB online
+
+10/06/2016
+1.what was done
+Domenic
+basic files created on server.
+broke pwd encryption validation
+Yao - buitlt reservation page.
+
+2. Today's expectation
+Yao
+Keep building the reservation page.
+review JS
+Domenic
+fix password encryption validation
+fix online path links
+
+3. To be done
+linking pages
+CSS work
+complete design
+
+
+10/07/2016
+1.what was done
+Domenic
+Loaded files on server.
+broke pwd encryption validation
+Yao - buitlt reservation page.
+password encryption validation
+
+2. Today's expectation
+Yao
+Keep building the reservation page.
+Domenic
+fix password encryption validation
+fix online path links
+
+3. To be done
+linking pages
+CSS work
+complete design
