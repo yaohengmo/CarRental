@@ -18,13 +18,31 @@
 {% endif %}
 
 <form method="post">
-    CAR ID: <input type="text" name="carID" value="{{v.carID}}"><br><br>
+    <!--CAR TYPE: <input type="text" name="carID" value="{{v.carID}}"><br><br>-->
+    CAR TYPE:
+    <select>
+        <option value="economy">Economy</option>
+        <option value="intermediate">Intermediate</option>
+        <option value="fullsize">Full size</option>
+        <option value="suv">SUV</option>
+        <option value="largesuv">Large SUV</option>
+        <option value="minivan">Minivan</option>
+    </select><br><br>
     PICKUP DATE: <input type="date" name="pickupDate" value="{{v.pickupDate}}">
     <span id="result"></span><br><br>
     RETURN DATE: <input type="date" name="returnDate" value="{{v.returnDate}}"><br><br>
     
-    LOCATION: <input type="text" name="location" value="{{v.location}}"><br><br>
-    <input type="submit" value="RESERVE">
+    LOCATION: 
+    <select>
+        <option value="montreal">Montreal</option>
+        <option value="toronto">Toronto</option>
+        <option value="calgary">Calgary</option>
+        <option value="vancouver">Vancouver</option>
+        <option value="novascotia">Nova Scotia</option>
+        <option value="minivan">Minivan</option>
+    </select><br><br>
+    
+    <input type="submit" value="Continue">
 </form>
 
 {% endblock %}
