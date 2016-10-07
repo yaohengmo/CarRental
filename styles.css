@@ -10,7 +10,15 @@ body {
 form {
     margin-top: 100px;
 }
-
+.img-logo {
+    margin-left: 300px;
+}
+#nav {
+    background-color: black;
+}
+#login {
+    float: right;
+}
 #footer {
     text-align: center;
    padding-top: 350px;

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 06, 2016 at 10:44 PM
+-- Generation Time: Oct 05, 2016 at 09:03 PM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 5.5.38
 
@@ -46,16 +46,6 @@ CREATE TABLE `customer` (
   `email` varchar(200) NOT NULL,
   `password` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `customer`
---
-
-INSERT INTO `customer` (`ID`, `name`, `email`, `password`) VALUES
-(1, 'yaoheng', 'yao1@hotmail.com', 'ef6d562d372a2978b827d204932668d860691727821e9a36f6f532df6fb581bd'),
-(2, 'david', 'yao@hotmail.com', 'ef6d562d372a2978b827d204932668d860691727821e9a36f6f532df6fb581bd'),
-(3, 'yaoheng2', 'yao2@hotmail.com', '123abcABC'),
-(4, 'Domenic', 'dp@dp.com', 'Summer99');
 
 -- --------------------------------------------------------
 
@@ -109,7 +99,7 @@ ALTER TABLE `car`
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `reservations`
 --

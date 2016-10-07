@@ -22,6 +22,7 @@ $log->pushHandler(new StreamHandler('logs/errors.log', Logger::ERROR));
 DB::$dbName = 'carrental';
 DB::$user = 'carrental';
 DB::$password = 'DLGbPGKfpby5FW5s';
+DB::$encoding = 'utf8'; // defaults to latin1 if omitted
 DB::$error_handler = 'sql_error_handler';
 DB::$nonsql_error_handler = 'nonsql_error_handler';
 
