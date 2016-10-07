@@ -14,11 +14,9 @@ $log = new Logger('main');
 $log->pushHandler(new StreamHandler('logs/everything.log', Logger::DEBUG));
 $log->pushHandler(new StreamHandler('logs/errors.log', Logger::ERROR));
 
+//DB::$host = 'ipd8.info';
 //DB::$dbName = 'cp4724_carrental';
 //DB::$user = 'cp4724_carrental';
-//DB::$password = 'zWv%tp1=&5RH';
-//DB::$host = 'ipd8.info';
-
 DB::$dbName = 'carrental';
 DB::$user = 'carrental';
 DB::$password = 'DLGbPGKfpby5FW5s';
