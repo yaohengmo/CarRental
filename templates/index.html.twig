@@ -2,12 +2,9 @@
 
 {% block title %}CarRental{% endblock %}
 
-<<<<<<< HEAD
-{% block nav %}
-     
-    {% endblock %}
-
+    
 {% block content %}
+
       
     <h1>Welcome to ASFAR CarRental</h1><h4> (Travel AS FAR as you want to go..)</h4><br>
 <div id="photo" class="w3-content w3-section" style="max-width:600px">
@@ -39,20 +36,7 @@ function carousel() {
 {% if sessionUser %}
     <p id="para">Hello {{sessionUser.name}} ({{sessionUser.email}}).
         You may <a href="/logout">logout</a> OR <a href="/reservation">Continue to Reservation Page</a>.</p>
-=======
-
-{% block content %}
-    
-    
-    
-<h1>Welcome to Online CarRental</h1>
-
-{% if sessionUser %}
-    <p>Hello {{sessionUser.name}} ({{sessionUser.email}}).
-        You may <a href="/logout">logout</a> OR <a href="/reservation">BOOK YOUR CAR</a>.</p>
->>>>>>> d391beef42731a989061935ea5833f5a52693232
-{% else %}
-<!--<p>You may <a href="/login">login</a> or <a href="/register">register</a>.</p>-->
 {% endif %}
+
 
 {% endblock %}
