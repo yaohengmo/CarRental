@@ -53,13 +53,17 @@ li a {
     margin: 0;
     padding: 0;
     width: 25%;
-    height: 1800px;
+ 
     float: left; 
     background-color: cce5ff;    
 }
 h1 {
     margin-top: 10px;
     font-size: 2em;
+}
+#title {
+    text-align: center;
+    margin: 30px 0 40px 0; 
 }
 h2 {
     margin-top: 10px;
@@ -89,7 +93,7 @@ button {
     padding: 0;
     margin: 0;
     width: 70%;
-    height: 1800px;
+   
     background-color: cce5ff;
 }
 .img-logo {
@@ -104,6 +108,6 @@ button {
 #footer {
     clear: float;
     text-align: center;
-   padding-top: 1830px;
+   margin-bottom: 15%;
    
 }

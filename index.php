@@ -118,11 +118,11 @@ $app->post('/register', function() use ($app, $log) {
         ));
         $id = DB::insertId();
         $log->debug(sprintf("User %s created", $id));
-        $app->render('register_success.html.twig');
+        $app->render('/register_success.html.twig');
     }
 });
 $app->get('/login', function() use ($app, $log) {
-    $app->render('login.html.twig');
+    $app->render('/login.html.twig');
 });
 $app->post('/login', function() use ($app, $log) {
     $email = $app->request->post('email');
@@ -131,7 +131,7 @@ $app->post('/login', function() use ($app, $log) {
     if (!$user) {
         $log->debug(sprintf("User failed for email %s from IP %s",
                     $email, $_SERVER['REMOTE_ADDR']));
-        $app->render('login.html.twig', array('loginFailed' => TRUE));
+        $app->render('/login.html.twig', array('loginFailed' => TRUE));
     } 
     
     else {
@@ -141,11 +141,11 @@ $app->post('/login', function() use ($app, $log) {
             $_SESSION['user'] = $user;
             $log->debug(sprintf("User %s logged in successfuly from IP %s",
                     $user['ID'], $_SERVER['REMOTE_ADDR']));
-            $app->render('login_success.html.twig');
+            $app->render('/login_success.html.twig');
         } else {
             $log->debug(sprintf("User failed for email %s from IP %s",
                     $email, $_SERVER['REMOTE_ADDR']));
-            $app->render('login.html.twig', array('loginFailed' => TRUE));            
+            $app->render('/login.html.twig', array('loginFailed' => TRUE));            
         }
     }
         /*{
@@ -201,13 +201,13 @@ $app->post('/reservation', function() use ($app, $log) {
         ));
         $id = DB::insertId();
         $log->debug(sprintf("User %s created", $id));
-        $app->render('reservation_success.html.twig');
+        $app->render('/reservation_success.html.twig');
     }
 });
 
 $app->get('/logout', function() use ($app, $log) {
     $_SESSION['user'] = array();
-    $app->render('logout_success.html.twig');
+    $app->render('/logout_success.html.twig');
 });
 
 
