@@ -74,23 +74,27 @@ h3 {
     float: right;
     vertical-align: -300px;
 }
-#date {
-    margin-top: 50px;
-   position: fixed;
-    
-    border-style: outset;
-    border-radius: 10px;
-    padding: 25px;   
+.datepicker{
+    display: inline-block;
+    margin-top: 20px;
+    margin-left: 15px;
+}
+#selectlocation {
+    display: inline-block;
+    margin-top: 20px;
 }
 button {
+    width: 100px;
+    height: 30px;
     margin-left: 40%;
+    margin-top: 20px;
     border-radius: 5px;
 }
-#rightcolumn {  
-    float: right;
+#centercolumn {  
+    float: center;
     padding: 0;
-    margin: 0;
-    width: 70%;
+    margin: auto;
+    width: 90%;
    
     background-color: cce5ff;
 }
@@ -104,5 +108,15 @@ button {
     float: right;
 }
 #footer {
+    margin-top: 100px;
     text-align: center;   
+}
+#toppanel {
+    width: 95%;
+    height: 220px;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin: auto;
+    margin-bottom: 70px;
+    background-color: #9bbae8;
 }
