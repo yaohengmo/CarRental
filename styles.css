@@ -28,11 +28,9 @@ form {
     background-color: black;
     height: 200px;   
 }
-#photo {
-    margin-left: 20%;
-}
+
 #para {
-    margin-top: 30px;
+    margin-top: 200px;
 }
 #navbar {
     display: inline;   
@@ -106,8 +104,5 @@ button {
     float: right;
 }
 #footer {
-    clear: float;
-    text-align: center;
-   margin-bottom: 15%;
-   
+    text-align: center;   
 }
