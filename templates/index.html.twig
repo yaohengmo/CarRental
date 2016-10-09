@@ -2,15 +2,44 @@
 
 {% block title %}CarRental{% endblock %}
 
+{% block nav %}
+     
+    {% endblock %}
+
 {% block content %}
-    
-<h1>Welcome to Online CarRental</h1>
+      
+    <h1>Welcome to ASFAR CarRental</h1><h4> (Travel AS FAR as you want to go..)</h4><br>
+<div id="photo" class="w3-content w3-section" style="max-width:600px">
+
+  <img class="mySlides w3-animate-fading" src="/pics/img_rr_01.jpg" style="width:100%">
+  <img class="mySlides w3-animate-fading" src="/pics/img_rr_02.jpg" style="width:100%">
+  <img class="mySlides w3-animate-fading" src="/pics/img_rr_03.jpg" style="width:100%">
+  <img class="mySlides w3-animate-fading" src="/pics/img_rr_04.jpg" style="width:100%">
+</div>
+
+<script>
+var myIndex = 0;
+carousel();
+
+function carousel() {
+    var i;
+    var x = document.getElementsByClassName("mySlides");
+    for (i = 0; i < x.length; i++) {
+       x[i].style.display = "none";  
+    }
+    myIndex++;
+    if (myIndex > x.length) {myIndex = 1}    
+    x[myIndex-1].style.display = "block";  
+    setTimeout(carousel, 7000);    
+}
+</script>
+
 
 {% if sessionUser %}
-    <p>Hello {{sessionUser.name}} ({{sessionUser.email}}).
-        You may <a href="/logout">logout</a>.</p>
+    <p id="para">Hello {{sessionUser.name}} ({{sessionUser.email}}).
+        You may <a href="/logout">logout</a> OR <a href="/reservation">Continue to Reservation Page</a>.</p>
 {% else %}
-<p>You may <a href="/login">login</a> or <a href="/register">register</a>.</p>
+<!--<p>You may <a href="/login">login</a> or <a href="/register">register</a>.</p>-->
 {% endif %}
 
 {% endblock %}

@@ -1,17 +1,108 @@
 body {
+    margin-top: 200px;
     background-color: #3399FF;
+    width: 100%;
+    margin: auto;
+    
 }
 #centerContent {
-    width: 500px;
+    
+    width: 900px;
     padding: 0;
     margin: 0 auto;
     
 }
+#header {
+    width: 100%;
+}
 form {
     margin-top: 100px;
 }
-
+#logo {
+   
+    margin-left: 35%;
+   
+   
+}
+#nav {
+    margin: auto;
+    width: 100%;
+    background-color: black;
+    height: 200px;
+   
+}
+#photo {
+    margin-left: 20%;
+}
+#para {
+    margin-top: 30px;
+}
+#navbar {
+    display: inline;
+    
+    float: right;
+}
+li {
+    margin-top: 10px;
+    float: right;
+    list-style: none;
+}
+li a {
+    display: inline;
+    text-decoration: none;
+    color: white;
+    padding-right: 15px;
+}
+#leftcolumn {
+    margin: 0;
+    padding: 0;
+    width: 25%;
+    height: 1800px;
+    float: left; 
+    background-color: cce5ff;
+    
+}
+h1 {
+    margin-top: 10px;
+    font-size: 2em;
+}
+h2 {
+    margin-top: 10px;
+    font-size: 1.5em;
+    float: left;
+}
+h3 {
+    font-size: 1.2em;
+    color:white;
+    float: right;
+    vertical-align: -300px;
+}
+#date {
+    margin-top: 50px;
+   position: fixed;
+    
+    border-style: outset;
+    border-radius: 10px;
+    padding: 25px;
+    
+    
+}
+button {
+    margin-left: 40%;
+    border-radius: 5px;
+}
+#rightcolumn {
+    
+    float: right;
+    padding: 0;
+    margin: 0;
+    width: 70%;
+    height: 1800px;
+    background-color: cce5ff;
+}
 #footer {
+    clear: float;
     text-align: center;
-   padding-top: 350px;
+   padding-top: 1830px;
+   
 }
