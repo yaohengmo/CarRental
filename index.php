@@ -13,13 +13,21 @@ use Monolog\Handler\StreamHandler;
 $log = new Logger('main');
 $log->pushHandler(new StreamHandler('logs/everything.log', Logger::DEBUG));
 $log->pushHandler(new StreamHandler('logs/errors.log', Logger::ERROR));
+<<<<<<< HEAD
 //DB::$host = 'ipd8.info';
 //
+=======
+
+//DB::$host = 'ipd8.info';
+>>>>>>> d391beef42731a989061935ea5833f5a52693232
 //DB::$dbName = 'cp4724_carrental';
 //DB::$user = 'cp4724_carrental';
 DB::$dbName = 'carrental';
 DB::$user = 'carrental';
+<<<<<<< HEAD
 
+=======
+>>>>>>> d391beef42731a989061935ea5833f5a52693232
 DB::$password = 'DLGbPGKfpby5FW5s';
 DB::$encoding = 'utf8'; // defaults to latin1 if omitted
 DB::$error_handler = 'sql_error_handler';
