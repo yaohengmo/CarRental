@@ -114,7 +114,9 @@ $app->post('/register', function() use ($app, $log) {
     } else {
         // STATE 2: submission successful
         DB::insert('customer', array(
-            'name' => $name, 'email' => $email, 'password' => $pass1
+            'name' => $name, 'email' => $email,
+            //'password' => $pass1
+            'password' => password_hash($pass1, CRYPT_BLOWFISH)
         ));
         $id = DB::insertId();
         $log->debug(sprintf("User %s created", $id));
@@ -135,23 +137,6 @@ $app->post('/login', function() use ($app, $log) {
     } 
     
     else {
-        if ($user['password'] == $pass) {
-            // LOGIN successful
-            unset($user['password']);
-            $_SESSION['user'] = $user;
-            $log->debug(sprintf("User %s logged in successfuly from IP %s",
-                    $user['ID'], $_SERVER['REMOTE_ADDR']));
-            $app->render('/login_success.html.twig');
-        } else {
-            $log->debug(sprintf("User failed for email %s from IP %s",
-                    $email, $_SERVER['REMOTE_ADDR']));
-            $app->render('/login.html.twig', array('loginFailed' => TRUE));            
-        }
-    }
-        /*{
-        // password MUST be compared in PHP because SQL is case-insenstive
-        //if ($user['password'] == hash('sha256',$pass)) {
-        //crypt bloatfish encryption
         if (password_verify($pass, $user['password'])) {
             // LOGIN successful
             unset($user['password']);
@@ -164,7 +149,24 @@ $app->post('/login', function() use ($app, $log) {
                     $email, $_SERVER['REMOTE_ADDR']));
             $app->render('login.html.twig', array('loginFailed' => TRUE));            
         }
-    }*/
+        /*
+        if ($user['password'] == $pass) {
+            // LOGIN successful
+            unset($user['password']);
+            $_SESSION['user'] = $user;
+            $log->debug(sprintf("User %s logged in successfuly from IP %s",
+                    $user['ID'], $_SERVER['REMOTE_ADDR']));
+            $app->render('/login_success.html.twig');
+        } 
+        else {
+            $log->debug(sprintf("User failed for email %s from IP %s",
+                    $email, $_SERVER['REMOTE_ADDR']));
+            $app->render('/login.html.twig', array('loginFailed' => TRUE));            
+        }
+         
+         */
+    }
+        
 });
 
 $app->get('/reservation', function() use ($app, $log) {
