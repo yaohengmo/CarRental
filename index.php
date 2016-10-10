@@ -84,8 +84,8 @@ $app->post('/register', function() use ($app, $log) {
     $valueList = array ('name' => $name, 'email' => $email);
     // submission received - verify
     $errorList = array();
-    if (strlen($name) < 4) {
-        array_push($errorList, "Name must be at least 4 characters long");
+    if (strlen($name) < 3) {
+        array_push($errorList, "Name must be at least 3 characters long");
         unset($valueList['name']);
     }
     if (filter_var($email, FILTER_VALIDATE_EMAIL) === FALSE) {
@@ -143,28 +143,13 @@ $app->post('/login', function() use ($app, $log) {
             $_SESSION['user'] = $user;
             $log->debug(sprintf("User %s logged in successfuly from IP %s",
                     $user['ID'], $_SERVER['REMOTE_ADDR']));
-            $app->render('login_success.html.twig');
-        } else {
-            $log->debug(sprintf("User failed for email %s from IP %s",
-                    $email, $_SERVER['REMOTE_ADDR']));
-            $app->render('login.html.twig', array('loginFailed' => TRUE));            
-        }
-        /*
-        if ($user['password'] == $pass) {
-            // LOGIN successful
-            unset($user['password']);
-            $_SESSION['user'] = $user;
-            $log->debug(sprintf("User %s logged in successfuly from IP %s",
-                    $user['ID'], $_SERVER['REMOTE_ADDR']));
             $app->render('/login_success.html.twig');
-        } 
-        else {
+        } else {
             $log->debug(sprintf("User failed for email %s from IP %s",
                     $email, $_SERVER['REMOTE_ADDR']));
             $app->render('/login.html.twig', array('loginFailed' => TRUE));            
         }
-         
-         */
+        
     }
         
 });
@@ -188,12 +173,10 @@ $app->post('/reservation', function() use ($app, $log) {
             array_push($errorList, "Car already rent out");
             unset($valueList['carID']);
         }
-    
-   
     //
     if ($errorList) {
         // STATE 3: submission failed        
-        $app->render('reservation.html.twig', array(
+        $app->render('/reservation.html.twig', array(
             'errorList' => $errorList, 'v' => $valueList
         ));
     } else {
@@ -211,7 +194,5 @@ $app->get('/logout', function() use ($app, $log) {
     $_SESSION['user'] = array();
     $app->render('/logout_success.html.twig');
 });
-
-
 
 $app->run();
