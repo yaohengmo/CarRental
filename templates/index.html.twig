@@ -38,9 +38,12 @@ function carousel() {
 
 {% if sessionUser %}
     <p id="para">Hello {{sessionUser.name}} ({{sessionUser.email}}).
-        You may <a href="/logout">logout</a> OR <a href="/reservation">Continue to Reservation Page</a>.</p>
+        You may <a href="/reservation">Continue to Reservation Page</a> OR <a href="/logout">logout</a>.</p>
 {% endif %}
 
-
+    <img class="leftDiv" src="/pics/elantra_intermed.png" width="50%" height="250">
+    <img class="leftDiv" src="/pics/FordEdge.png" width="50%" height="250">
+    <img class="rightDiv" src="/pics/fullsizeAltima.png" width="50%" height="250">
+    <img class="rightDiv" src="/pics/nissanversa.png" width="50%" height="250">
 
 {% endblock %}
