@@ -4,18 +4,18 @@
 
 {% block content %}
     
-<h1>Login</h1>
+<h1>Staff Login</h1>
 
 {% if loginFailed %}
     <p>Invalid username or password</p>
 {% endif %}
 
 <form method="post">
-    Client:
-          Email: <input type="text" name="email"><br>
-          Password: <input type="password" name="pass"><br><br><br>
+    
           
-   
+    Staff:
+          Name:<input type="text" name="name"><br>
+          Password: <input type="password" name="pass"><br>
     <input type="submit" value="Login">
 </form>
 
