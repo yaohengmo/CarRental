@@ -50,3 +50,14 @@ fix online path links
 linking pages
 CSS work
 complete design
+
+10/11/2016
+1. What was done
+completed login,resgistration CSS pages
+
+2. Today's expectation
+fix index.html
+complete reservation page
+
+3.To be done
+

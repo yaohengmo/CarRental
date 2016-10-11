@@ -1,14 +1,10 @@
 {% extends "master.html.twig" %}
 
-{% block title %}CarRental{% endblock %}
+{% block title %}CarRental{% endblock %} 
 
-    
-{% block content %}
-
+  {% block content %}
       
-    <h1>Welcome to ASFAR CarRental</h1><h4> (Travel AS FAR as you want to go..)</h4><br>
 <div id="nav" class="w3-content w3-section" style="max-width:100%">
-
   <img class="mySlides" src="/pics/scenery1.jpg" width="100%" height="350">
   <img class="mySlides" src="/pics/scenery2.jpg" width="100%" height="350">
   <img class="mySlides" src="/pics/scenery3.jpg" width="100%" height="350">
@@ -16,8 +12,12 @@
   <img class="mySlides" src="/pics/scenery5.jpg" width="100%" height="350">
   <img class="mySlides" src="/pics/scenery6.jpg" width="100%" height="350">
   <img class="mySlides" src="/pics/scenery7.jpg" width="100%" height="350">
+  
 </div>
-
+     
+     
+   <h1>Welcome to ASFAR CarRental</h1><h4> (Travel AS FAR as you want to go..)</h4><br>
+   
 <script>
 var myIndex = 0;
 carousel();
@@ -41,9 +41,9 @@ function carousel() {
         You may <a href="/reservation">Continue to Reservation Page</a> OR <a href="/logout">logout</a>.</p>
 {% endif %}
 
-    <img class="leftDiv" src="/pics/elantra_intermed.png" width="50%" height="250">
-    <img class="leftDiv" src="/pics/FordEdge.png" width="50%" height="250">
-    <img class="rightDiv" src="/pics/fullsizeAltima.png" width="50%" height="250">
-    <img class="rightDiv" src="/pics/nissanversa.png" width="50%" height="250">
+    <img class="leftDiv" src="/pics/elantra_intermed.png" width="40%" height="250">
+    <img class="leftDiv" src="/pics/FordEdge.png" width="40%" height="250">
+    <img class="rightDiv" src="/pics/fullsizeAltima.png" width="40%" height="250">
+    <img class="rightDiv" src="/pics/nissanversa.png" width="40%" height="250">
 
 {% endblock %}
