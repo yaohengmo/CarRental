@@ -138,7 +138,7 @@ $app->post('/login', function() use ($app, $log) {
     } 
     
     else {
-<<<<<<< HEAD
+
         if ($userClient['password'] == $pass) {
             // LOGIN successful
             unset($userClient['password']);
@@ -173,26 +173,8 @@ $app->post('/login', function() use ($app, $log) {
             $app->render('login.html.twig', array('loginFailed' => TRUE));            
         }
     }
-        /*{
-        // password MUST be compared in PHP because SQL is case-insenstive
-        //if ($user['password'] == hash('sha256',$pass)) {
-        //crypt bloatfish encryption
-=======
->>>>>>> origin/master
-        if (password_verify($pass, $user['password'])) {
-            // LOGIN successful
-            unset($user['password']);
-            $_SESSION['user'] = $user;
-            $log->debug(sprintf("User %s logged in successfuly from IP %s",
-                    $user['ID'], $_SERVER['REMOTE_ADDR']));
-            $app->render('/login_success.html.twig');
-        } else {
-            $log->debug(sprintf("User failed for email %s from IP %s",
-                    $email, $_SERVER['REMOTE_ADDR']));
-            $app->render('/login.html.twig', array('loginFailed' => TRUE));            
-        }
-        
-    }
+               
+    
         
 });
 
