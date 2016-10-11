@@ -37,8 +37,17 @@ function carousel() {
 
 
 {% if sessionUser %}
+<<<<<<< HEAD
+    <p>Hello {{sessionUser.name}} ({{sessionUser.email}}).
+            You may <a href="/logout">logout</a> OR <a href="/reservation">BOOK YOUR CAR</a>.</p>
+{% else %}
+<p>Client: <a href="/login">login</a> or <a href="/register">register</a>.</p>
+
+<p>Staff: <a href="/login">login</a> </p>
+=======
     <p id="para">Hello {{sessionUser.name}} ({{sessionUser.email}}).
         You may <a href="/reservation">Continue to Reservation Page</a> OR <a href="/logout">logout</a>.</p>
+>>>>>>> origin/master
 {% endif %}
 
     <img class="leftDiv" src="/pics/elantra_intermed.png" width="40%" height="250">
