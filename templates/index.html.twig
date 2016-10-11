@@ -9,13 +9,13 @@
     <h1>Welcome to ASFAR CarRental</h1><h4> (Travel AS FAR as you want to go..)</h4><br>
 <div id="nav" class="w3-content w3-section" style="max-width:100%">
 
-  <img class="mySlides w3-animate-fading" src="/pics/scenery1.jpg" width="100%" height="350">
-  <img class="mySlides w3-animate-fading" src="/pics/scenery2.jpg" width="100%" height="350">
-  <img class="mySlides w3-animate-fading" src="/pics/scenery3.jpg" width="100%" height="350">
-  <img class="mySlides w3-animate-fading" src="/pics/scenery4.jpg" width="100%" height="350">
-  <img class="mySlides w3-animate-fading" src="/pics/scenery5.jpg" width="100%" height="350">
-  <img class="mySlides w3-animate-fading" src="/pics/scenery6.jpg" width="100%" height="350">
-  <img class="mySlides w3-animate-fading" src="/pics/scenery7.jpg" width="100%" height="350">
+  <img class="mySlides" src="/pics/scenery1.jpg" width="100%" height="350">
+  <img class="mySlides" src="/pics/scenery2.jpg" width="100%" height="350">
+  <img class="mySlides" src="/pics/scenery3.jpg" width="100%" height="350">
+  <img class="mySlides" src="/pics/scenery4.jpg" width="100%" height="350">
+  <img class="mySlides" src="/pics/scenery5.jpg" width="100%" height="350">
+  <img class="mySlides" src="/pics/scenery6.jpg" width="100%" height="350">
+  <img class="mySlides" src="/pics/scenery7.jpg" width="100%" height="350">
 </div>
 
 <script>
@@ -40,6 +40,7 @@ function carousel() {
     <p id="para">Hello {{sessionUser.name}} ({{sessionUser.email}}).
         You may <a href="/logout">logout</a> OR <a href="/reservation">Continue to Reservation Page</a>.</p>
 {% endif %}
+
 
 
 {% endblock %}

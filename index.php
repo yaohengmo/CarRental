@@ -16,10 +16,10 @@ $log->pushHandler(new StreamHandler('logs/errors.log', Logger::ERROR));
 
 //DB::$host = 'ipd8.info';
 
-//DB::$dbName = 'cp4724_carrental';
-//DB::$user = 'cp4724_carrental';
-DB::$dbName = 'carrental';
-DB::$user = 'carrental';
+DB::$dbName = 'cp4724_carrental';
+DB::$user = 'cp4724_carrental';
+//DB::$dbName = 'carrental';
+//DB::$user = 'carrental';
 
 DB::$password = 'DLGbPGKfpby5FW5s';
 DB::$encoding = 'utf8'; // defaults to latin1 if omitted

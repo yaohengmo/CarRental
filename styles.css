@@ -8,6 +8,7 @@ body {
 #centerContent {
     
     width: 900px;
+    display: block;
     padding: 0;
     margin: 0 auto;
     
@@ -16,9 +17,11 @@ body {
     width: 100%;
 }
 form {
-    margin-top: 100px;
+    margin-top: 30px;
 }
-
+.mySlides {
+    height: 250px;
+}
 #logo {  
     margin-left: 35%;  
 }
@@ -56,6 +59,8 @@ li a {
     background-color: cce5ff;    
 }
 h1 {
+    margin: auto;
+    text-align: center;
     margin-top: 10px;
     font-size: 2em;
 }
@@ -64,6 +69,7 @@ h1 {
     margin: 30px 0 40px 0; 
 }
 h2 {
+    
     margin-top: 10px;
     font-size: 1.5em;
     float: left;
@@ -73,6 +79,10 @@ h3 {
     color:white;
     float: right;
     vertical-align: -300px;
+}
+h4 {
+    margin: auto;
+    text-align: center;
 }
 .datepicker{
     display: inline-block;
@@ -119,4 +129,60 @@ button {
     margin: auto;
     margin-bottom: 70px;
     background-color: #9bbae8;
+}
+#logintoppanel {
+    width: 50%;
+    height: 220px;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin: auto;
+    margin-top: 100px;
+    
+    background-color: #9bbae8;
+}
+#email { 
+    margin-left: 70px;
+    width: 50%;
+    padding-bottom: 20px;
+    text-align: center;
+}
+#pwd {
+    text-align: center;
+    margin-left: -70px;
+    
+}
+#pwd input {
+    width: 110px;
+}
+#submitlogin {
+    text-align: center;
+    padding-top: 35px;   
+}
+#submitreg {
+    text-align: center;
+    padding-top: 30px;   
+}
+#registerForm {
+    margin-left: 30px;   
+}
+#nameForm input {
+    width: 238px;
+}
+#emailForm {
+    padding-top: 8px;
+}
+#emailForm input {
+    width: 238px;
+}
+#pass1 {
+    padding-top: 8px;
+}
+#pass1 input {
+    width: 215px;
+}
+#pass2 {
+    padding-top: 8px;
+}
+#pass2 input {
+    width: 150px;
 }

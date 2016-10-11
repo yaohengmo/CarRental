@@ -24,14 +24,17 @@
     </ul>
 {% endif %}
 
-<form method="post">
-    Name: <input type="text" name="name" value="{{v.name}}"><br><br>
-    Email: <input type="text" name="email" value="{{v.email}}">
-    <span id="result"></span><br><br>
-    Password: <input type="password" name="pass1"><br><br>
-    Password (repeated) <input type="password" name="pass2"><br><br>
-    <input type="submit" value="Register">
-</form>
-
+<div id="logintoppanel">
+    <form method="post">
+        <div id="registerForm">
+        <div id="nameForm">Name:<input type="text" name="name" value="{{v.name}}"></div>
+        <div id="emailForm">Email:<input type="text" name="email" value="{{v.email}}">
+        <span id="result"></span>
+        <div id="pass1">Password:<input type="password" name="pass1"></div>
+        <div id="pass2">Password (repeated)<input type="password" name="pass2"></div>
+        <div id="submitreg"><input type="submit" value="Register"></div>
+        </div>
+    </form>
+</div>
 {% endblock %}
     
