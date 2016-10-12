@@ -34,17 +34,14 @@ form {
 }
 
 #para {
-<<<<<<< HEAD
     margin-top: 50px;
 }
 .leftDiv {
     margin-top: 100px;
-=======
     
 }
 .leftDiv {
     margin-top: 30px;
->>>>>>> 2da94a302068dfbbeed4c1644004bc9ed52005bf
     float: left;
     margin-right: 10%;
     margin-bottom: 50px;
