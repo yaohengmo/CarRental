@@ -60,4 +60,16 @@ fix index.html
 complete reservation page
 
 3.To be done
+reservation page
+
+10/12/2016
+1. What was done
+home page modifications and fixes
+
+2. Today's expectation
+Reservation / booking page
+3.To be done
+
+Reservation / booking page to be completed
+get cart working
 
