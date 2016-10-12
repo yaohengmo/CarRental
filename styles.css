@@ -38,15 +38,19 @@ form {
 }
 .leftDiv {
     margin-top: 30px;
-    float: left;
+    float:left;
     margin-right: 10%;
     margin-bottom: 50px;
+    font-size: 30px;
+    
 }
 .rightDiv {
     margin-top: 30px;
     float: left;
     margin-right: 10%;
     margin-bottom: 50px;
+    font-size: 30px;
+    
 }
 #navbar {
     display: inline;   
