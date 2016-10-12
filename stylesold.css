@@ -34,10 +34,6 @@ form {
 }
 
 #para {
-    margin-top: 50px;
-}
-.leftDiv {
-    margin-top: 100px;
     
 }
 .leftDiv {
@@ -47,7 +43,6 @@ form {
     margin-bottom: 50px;
 }
 .rightDiv {
-    margin-top: 100px;
     float: left;
     margin-right: 10%;
     margin-bottom: 50px;
@@ -71,6 +66,7 @@ li a {
     margin: 0;
     padding: 0;
     width: 25%;
+ 
     float: left; 
     background-color: cce5ff;    
 }
@@ -154,26 +150,23 @@ button {
     border: 1px solid black;
     border-radius: 10px;
     margin: auto;
-    margin-top: 100px;    
+    margin-top: 100px;
+    
     background-color: #9bbae8;
 }
 #email { 
-    margin-left: 100px;
+    margin-left: 70px;
+    width: 50%;
     padding-bottom: 20px;
     text-align: center;
-    display: inline-block;
 }
-
-#loginpwd {
-     margin-left: 100px; 
+#pwd {
+    text-align: center;
+    margin-left: -70px;
+    
 }
-#loginemail {
-    display: inline-block;
-    padding-left: 34px;   
-}
-#loginpass {
-    display: inline-block;
-    margin-left: 12px;
+#pwd input {
+    width: 110px;
 }
 #submitlogin {
     text-align: center;
@@ -184,38 +177,26 @@ button {
     padding-top: 30px;   
 }
 #registerForm {
-    margin-left: 60px;   
+    margin-left: 30px;   
 }
 #nameForm input {
-    width: 215px;
+    width: 238px;
 }
-#nametxt {
-    margin-left: 28px;
-    display: inline-block;
-}
-#emailtxt {
-    margin-left: 28px;
-    display: inline-block;   
-}
-
-
 #emailForm {
     padding-top: 8px;
 }
 #emailForm input {
-    width: 215px;
+    width: 238px;
 }
 #pass1 {
     padding-top: 8px;
 }
 #pass1 input {
-    margin-left: 5px;
     width: 215px;
 }
 #pass2 {
     padding-top: 8px;
 }
 #pass2 input {
-    margin-left: 5px;
-    width: 215px;
+    width: 150px;
 }

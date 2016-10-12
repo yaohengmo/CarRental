@@ -129,53 +129,31 @@ $app->get('/login', function() use ($app, $log) {
 $app->post('/login', function() use ($app, $log) {
     $email = $app->request->post('email');
     $pass = $app->request->post('pass');
-    $userClient = DB::queryFirstRow("SELECT * FROM customer WHERE email=%s", $email);  
-    $userStaff = DB::queryFirstRow("SELECT * FROM staff WHERE name=%s", $name);    
-    if (!$userClient) {
+    $user = DB::queryFirstRow("SELECT * FROM customer WHERE email=%s", $email);  
+    //$userStaff = DB::queryFirstRow("SELECT * FROM staff WHERE name=%s", $name);    
+    if (!$user) {
         $log->debug(sprintf("User failed for email %s from IP %s",
                     $email, $_SERVER['REMOTE_ADDR']));
         $app->render('/login.html.twig', array('loginFailed' => TRUE));
     } 
     
     else {
-
-        if ($userClient['password'] == $pass) {
+        // password MUST be compared in PHP because SQL is case-insenstive
+        //if ($user['password'] == hash('sha256', $pass)) {
+        if (password_verify($pass, $user['password'])) {
             // LOGIN successful
-            unset($userClient['password']);
-            $_SESSION['user'] = $userClient;
+            unset($user['password']);
+            $_SESSION['user'] = $user;
             $log->debug(sprintf("User %s logged in successfuly from IP %s",
-                    $userClient['ID'], $_SERVER['REMOTE_ADDR']));
+                    $user['ID'], $_SERVER['REMOTE_ADDR']));
             $app->render('login_success.html.twig');
         } else {
             $log->debug(sprintf("User failed for email %s from IP %s",
                     $email, $_SERVER['REMOTE_ADDR']));
             $app->render('login.html.twig', array('loginFailed' => TRUE));            
         }
-    }
-    
-    if (!$userStaff) {
-        $log->debug(sprintf("User failed for name %s from IP %s",
-                    $name, $_SERVER['REMOTE_ADDR']));
-        $app->render('login.html.twig', array('loginFailed' => TRUE));
-    } 
-    
-    else {
-        if ($userStaff['password'] == $pass) {
-            // LOGIN successful
-            unset($userStaff['password']);
-            $_SESSION['user'] = $userStaff;
-            $log->debug(sprintf("User %s logged in successfuly from IP %s",
-                    $userStaff['ID'], $_SERVER['REMOTE_ADDR']));
-            $app->render('login_success.html.twig');
-        } else {
-            $log->debug(sprintf("User failed for name %s from IP %s",
-                    $name, $_SERVER['REMOTE_ADDR']));
-            $app->render('login.html.twig', array('loginFailed' => TRUE));            
-        }
-    }
-               
-    
-        
+    }         
+           
 });
 
 $app->get('/reservation', function() use ($app, $log) {
