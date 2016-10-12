@@ -2,16 +2,13 @@ body {
     margin-top: 200px;
     background-color: #3399FF;
     width: 100%;
-    margin: auto;
-    
+    margin: auto;    
 }
-#centerContent {
-    
+#centerContent {   
     width: 900px;
     display: block;
     padding: 0;
-    margin: 0 auto;
-    
+    margin: 0 auto;   
 }
 #header {
     width: 100%;
@@ -32,7 +29,6 @@ form {
     height: 200px; 
     padding-bottom: 100px;
 }
-
 #para {
     margin-top: 50px;
 }
@@ -84,8 +80,10 @@ h1 {
     text-align: center;
     margin: 30px 0 40px 0; 
 }
-h2 {
+#econotxt {
     
+}
+h2 { 
     margin-top: 10px;
     font-size: 1.5em;
     float: left;
@@ -163,7 +161,6 @@ button {
     text-align: center;
     display: inline-block;
 }
-
 #loginpwd {
      margin-left: 100px; 
 }
@@ -197,8 +194,6 @@ button {
     margin-left: 28px;
     display: inline-block;   
 }
-
-
 #emailForm {
     padding-top: 8px;
 }
