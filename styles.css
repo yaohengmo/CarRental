@@ -20,7 +20,7 @@ form {
     margin-top: 30px;
 }
 .mySlides {
-    height: 250px;
+    height: 300px;
 }
 #logo {  
     margin-left: 35%;  
@@ -29,19 +29,31 @@ form {
     margin: auto;
     width: 100%;
     background-color: black;
-    height: 200px;   
+    height: 200px; 
+    padding-bottom: 100px;
 }
 
 #para {
+<<<<<<< HEAD
     margin-top: 50px;
 }
 .leftDiv {
     margin-top: 100px;
+=======
+    
+}
+.leftDiv {
+    margin-top: 30px;
+>>>>>>> 2da94a302068dfbbeed4c1644004bc9ed52005bf
     float: left;
+    margin-right: 10%;
+    margin-bottom: 50px;
 }
 .rightDiv {
     margin-top: 100px;
     float: left;
+    margin-right: 10%;
+    margin-bottom: 50px;
 }
 #navbar {
     display: inline;   
@@ -126,8 +138,10 @@ button {
     float: right;
 }
 #footer {
+    clear: left;
     margin-top: 100px;
-    text-align: center;   
+    text-align: center; 
+    margin-bottom: 50px;
 }
 #toppanel {
     width: 95%;
