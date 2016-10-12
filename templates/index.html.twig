@@ -2,7 +2,7 @@
 
 {% block title %}CarRental{% endblock %} 
 
-<<<<<<< HEAD
+
   {% block content %}
       
 <div id="nav" class="w3-content w3-section" style="max-width:100%">
@@ -42,56 +42,8 @@ function carousel() {
         You may <a href="/reservation">Continue to Reservation Page</a> OR <a href="/logout">logout</a>.</p>
 
 {% endif %}
-<div id="econotxt"><img class="leftDiv" src="/pics/nissanversa.png" width="40%" height="250">
-    
-</div>
-    <img class="leftDiv" src="/pics/elantra_intermed.png" width="40%" height="250">
-    <img class="rightDiv" src="/pics/fullsizeAltima.png" width="40%" height="250">
-    <img class="rightDiv" src="/pics/FordEdge.png" width="40%" height="250">
-    <img class="leftDiv" src="/pics/largeSUV.png" width="40%" height="250">
-    <img class="rightDiv" src="/pics/minivan.png" width="40%" height="250">
-=======
-{% block content %}
+ 
 
-    <div id="nav" class="w3-content w3-section" style="max-width:100%">
-        <img class="mySlides" src="/pics/scenery1.jpg" width="100%" height="350">
-        <img class="mySlides" src="/pics/scenery2.jpg" width="100%" height="350">
-        <img class="mySlides" src="/pics/scenery3.jpg" width="100%" height="350">
-        <img class="mySlides" src="/pics/scenery4.jpg" width="100%" height="350">
-        <img class="mySlides" src="/pics/scenery5.jpg" width="100%" height="350">
-        <img class="mySlides" src="/pics/scenery6.jpg" width="100%" height="350">
-        <img class="mySlides" src="/pics/scenery7.jpg" width="100%" height="350">
-
-    </div>
-
-
-    <h1>Welcome to ASFAR CarRental</h1><h4> (Travel AS FAR as you want to go..)</h4><br>
-
-    <script>
-        var myIndex = 0;
-        carousel();
-
-        function carousel() {
-            var i;
-            var x = document.getElementsByClassName("mySlides");
-            for (i = 0; i < x.length; i++) {
-                x[i].style.display = "none";
-            }
-            myIndex++;
-            if (myIndex > x.length) {
-                myIndex = 1
-            }
-            x[myIndex - 1].style.display = "block";
-            setTimeout(carousel, 7000);
-        }
-    </script>
-
-
-    {% if sessionUser %}
-        <p id="para">Hello {{sessionUser.name}} ({{sessionUser.email}}).
-            You may <a href="/reservation">Continue to Reservation Page</a> OR <a href="/logout">logout</a>.</p>
-
-    {% endif %}
     <table>
         <tr>
             <td> <div class="leftDiv" >
@@ -139,6 +91,6 @@ function carousel() {
             </td>
         </tr>
     </table>
->>>>>>> 69c4993b49bfa06a9da90ea42c91695f1515e765
+
 
 {% endblock %}
