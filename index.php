@@ -191,6 +191,9 @@ $app->post('/reservation', function() use ($app, $log) {
         $app->render('/reservation_success.html.twig');
     }
 });
+$app->get('/reservation_success', function() use ($app, $log) {
+    $app->render('reservation_success.html.twig');
+});
 
 $app->get('/logout', function() use ($app, $log) {
     $_SESSION['user'] = array();
