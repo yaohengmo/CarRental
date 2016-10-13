@@ -161,7 +161,7 @@ $app->get('/reservation', function() use ($app, $log) {
 });
 // State 2: submission
 $app->post('/reservation', function() use ($app, $log) {
-    $carID = $app->request->post('carID');
+    $carType = $app->request->post('carType');
     $pickupDate = $app->request->post('pickupDate');
     $returnDate = $app->request->post('returnDate');
     $location = $app->request->post('location');
@@ -170,10 +170,10 @@ $app->post('/reservation', function() use ($app, $log) {
     $errorList = array();
     
     
-      $user = DB::queryFirstRow("SELECT ID FROM reservation WHERE carID=%s", $carID);        
+      $user = DB::queryFirstRow("SELECT ID FROM reservation WHERE carType=%s", $carType);        
         if ($user) {
-            array_push($errorList, "Car already rent out");
-            unset($valueList['carID']);
+            array_push($errorList, "Car type already booked");
+            unset($valueList['carType']);
         }
     //
     if ($errorList) {

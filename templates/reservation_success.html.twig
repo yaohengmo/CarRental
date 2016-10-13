@@ -4,6 +4,14 @@
 
 {% block content %}
     <h1>Reservation successful</h1>
-    <a href="/booking.html">Click to continue</a>
-    
+    <!--<a href="/booking.html">Click to continue</a>-->
+    <table border="1">
+        
+            <tr id="itemrow{{ci.ID}}">
+                <td>{{v.pickupDate}}</td>
+                <td>{{v.returnDate}}</td>
+            </tr>
+            
+        </table>
+                
 {% endblock %}

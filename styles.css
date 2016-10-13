@@ -4,6 +4,7 @@ body {
     width: 100%;
     margin: auto;    
 }
+
 #centerContent {   
     width: 900px;
     display: block;
@@ -32,11 +33,9 @@ form {
 #para {
     margin-top: 50px;
 }
+
 .leftDiv {
-    margin-top: 100px;
-    
-}
-.leftDiv {
+    width: 450px;
     margin-top: 30px;
     float:left;
     margin-right: 10%;
@@ -45,6 +44,7 @@ form {
     text-align: center;
 }
 .rightDiv {
+    width: 450px;
     margin-top: 30px;
     float: left;
     margin-right: 10%;
