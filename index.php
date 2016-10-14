@@ -168,6 +168,7 @@ $app->get('/reserve2', function() use ($app, $log) {
         'productList' => $productList
     ));
 });
+/*
 $app->post('/reservation', function() use ($app, $log) {
     $carType = $app->request->post('carType');
     $pickupDate = $app->request->post('pickupDate');
@@ -202,6 +203,8 @@ $app->post('/reservation', function() use ($app, $log) {
         $app->render('/reservation_success.html.twig');
     }
 });
+ * 
+ */
 $app->get('/reservation_success', function() use ($app, $log) {
     $app->render('reservation_success.html.twig');
 });
