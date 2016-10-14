@@ -165,10 +165,13 @@ $app->post('/reservation', function() use ($app, $log) {
     $pickupDate = $app->request->post('pickupDate');
     $returnDate = $app->request->post('returnDate');
     $location = $app->request->post('location');
-    $valueList = array ( 'pickupDate' => $pickupDate,'returnDate' => $returnDate,'location' => $location);
+    $rate = $app->request->post('rate');
+    $valueList = array ( 'pickupDate' => $pickupDate,'returnDate' => $returnDate,
+        'location' => $location, 'rate' => $rate);
     // submission received - verify
     $errorList = array();
     
+    DB::queryFirstRow("SELECT car.ID, location FROM car")
     
       $user = DB::queryFirstRow("SELECT ID FROM reservation WHERE carType=%s", $carType);        
         if ($user) {

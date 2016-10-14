@@ -2,9 +2,9 @@
 
 {% block title %}Reservation Page{% endblock %}
 {% block head %}
-    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -33,9 +33,9 @@
 
 
 <div id="toppanel">
-    <h4 class=datepicker>PICKUP DATE:</h4><input class="datepicker" type="text" name="pickupDate" value="{{v.pickupDate}}">
+    <h4 class=datepicker>PICKUP DATE:</h4><input id="dp" class="datepicker" type="text" name="pickupDate" value="{{v.pickupDate}}">
     <span id="result"></span>
-    <h4 class=datepicker>RETURN DATE:</h4><input class="datepicker" type="text" name="returnDate" value="{{v.returnDate}}">
+    <h4 class=datepicker>RETURN DATE:</h4><input id="dp" class="datepicker" type="text" name="returnDate" value="{{v.returnDate}}">
     <h4 class=datepicker>LOCATION:</h4> 
     <select id="selectlocation">
         <option value="dorval">Dorval</option>

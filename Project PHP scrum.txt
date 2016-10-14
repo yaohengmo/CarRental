@@ -73,3 +73,14 @@ Reservation / booking page
 Reservation / booking page to be completed
 get cart working
 
+
+10/13/2016
+
+1. What was done
+Reservation / booking page
+
+2. Today's expectation
+Reservation / booking page-create summary page of reservation
+
+3.To be done
+finalize payment
