@@ -84,3 +84,20 @@ Reservation / booking page-create summary page of reservation
 
 3.To be done
 finalize payment
+
+
+
+10/14/2016
+1. What was done
+Reservation / booking page
+restructured DB to add new tables and data
+
+2. Today's expectation
+Reservation / booking page-create summary page of reservation
+
+3.To be done
+-complete CART / Order submit page
+-add Orders, CART, OrdersID table
+-finalize payment page
+-success order page by Domenic
+-Yao - complete send email page / payment page

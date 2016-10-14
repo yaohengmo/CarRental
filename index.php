@@ -63,6 +63,9 @@ $view->setTemplatesDirectory(dirname(__FILE__) . '/templates');
 if (!isset($_SESSION['user'])) {
     $_SESSION['user'] = array();
 }
+$twig = $app->view()->getEnvironment();
+
+$twig->addGlobal('user', $_SESSION['user']);
 
 $app->get('/', function() use ($app) {    
     $app->render('index.html.twig',

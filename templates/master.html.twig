@@ -19,20 +19,24 @@
              <!--<h4>Travel <b>AS FAR<b> as you want with our cars..</h4> -->     
             <div id="navbar">
                 <ul id="navbar-nav">
-                      
+                    {% if user %}
                     <li>
                         <a href="/">Home</a>
-                    </li>
-                    <li>
-                        <a href="/register">Register</a>
-                    </li>
+                    </li>                    
                     <li>                       
                         <a href="/logout">Logout</a>                      
-                    </li>                                                    
+                    </li> 
+                    {% else %}
                     <li>
                         <a href="/login">Login</a>
                     </li> 
-                   
+                    <li>
+                        <a href="/register">Register</a>
+                    </li>
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    {% endif %}
                 </ul>
                 
             </div>
