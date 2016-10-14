@@ -220,3 +220,12 @@ button {
     margin-left: 5px;
     width: 215px;
 }
+#displayList {
+    float: right;
+    display: inline-block;
+    margin-left: 60px;
+    margin-top: 50px;
+}
+#displayList p {
+    font-size: 1.2em;
+}

@@ -68,13 +68,14 @@ $app->get('/emailexists/:email', function($email) use ($app, $log){
     $user = DB::queryFirstRow("SELECT ID from customer WHERE email = %s", $email);
     if ($user){
         echo " Email already registered";
-    }
-    
+    }   
 });
+
 // State 1: first show
 $app->get('/register', function() use ($app, $log) {
     $app->render('register.html.twig');
 });
+
 // State 2: submission
 $app->post('/register', function() use ($app, $log) {
     $name = $app->request->post('name');
@@ -92,7 +93,7 @@ $app->post('/register', function() use ($app, $log) {
         array_push($errorList, "Email does not look like a valid email");
         unset($valueList['email']);
     } else {
-        $user = DB::queryFirstRow("SELECT ID FROM customer WHERE email=%s", $email);        
+        $user = DB::queryFirstRow("SELECT ID FROM customers WHERE email=%s", $email);        
         if ($user) {
             array_push($errorList, "Email already registered");
             unset($valueList['email']);
@@ -113,7 +114,7 @@ $app->post('/register', function() use ($app, $log) {
         ));
     } else {
         // STATE 2: submission successful
-        DB::insert('customer', array(
+        DB::insert('customers', array(
             'name' => $name, 'email' => $email,
             //'password' => $pass1
             'password' => password_hash($pass1, CRYPT_BLOWFISH)
@@ -129,7 +130,7 @@ $app->get('/login', function() use ($app, $log) {
 $app->post('/login', function() use ($app, $log) {
     $email = $app->request->post('email');
     $pass = $app->request->post('pass');
-    $user = DB::queryFirstRow("SELECT * FROM customer WHERE email=%s", $email);  
+    $user = DB::queryFirstRow("SELECT * FROM customers WHERE email=%s", $email);  
     //$userStaff = DB::queryFirstRow("SELECT * FROM staff WHERE name=%s", $name);    
     if (!$user) {
         $log->debug(sprintf("User failed for email %s from IP %s",
@@ -159,7 +160,14 @@ $app->post('/login', function() use ($app, $log) {
 $app->get('/reservation', function() use ($app, $log) {
     $app->render('reservation.html.twig');
 });
+
 // State 2: submission
+$app->get('/reserve2', function() use ($app, $log) {
+    $productList = DB::query("SELECT * FROM cars");
+    $app->render('reserve2.html.twig', array(
+        'productList' => $productList
+    ));
+});
 $app->post('/reservation', function() use ($app, $log) {
     $carType = $app->request->post('carType');
     $pickupDate = $app->request->post('pickupDate');
@@ -173,7 +181,7 @@ $app->post('/reservation', function() use ($app, $log) {
     
     DB::queryFirstRow("SELECT car.ID, location FROM car")
     
-      $user = DB::queryFirstRow("SELECT ID FROM reservation WHERE carType=%s", $carType);        
+      $user = DB::queryFirstRow("SELECT ID FROM reservations WHERE carType=%s", $carType);        
         if ($user) {
             array_push($errorList, "Car type already booked");
             unset($valueList['carType']);
@@ -186,7 +194,7 @@ $app->post('/reservation', function() use ($app, $log) {
         ));
     } else {
         // STATE 2: submission successful
-        DB::insert('reservation', array(
+        DB::insert('reservations', array(
             'carID' => $carID, 'pickupDate' => $pickupDate, 'returnDate' => $returnDate
         ));
         $id = DB::insertId();
