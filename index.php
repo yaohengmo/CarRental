@@ -15,13 +15,19 @@ $log->pushHandler(new StreamHandler('logs/everything.log', Logger::DEBUG));
 $log->pushHandler(new StreamHandler('logs/errors.log', Logger::ERROR));
 
 //DB::$host = 'ipd8.info';
-
+if ($_SERVER[SERVER_NAME] == 'localhost') {
 //DB::$dbName = 'cp4724_carrental';
 //DB::$user = 'cp4724_carrental';
 DB::$dbName = 'carrental';
 DB::$user = 'carrental';
-
 DB::$password = 'DLGbPGKfpby5FW5s';
+}
+else { 
+    //remote connection
+DB::$dbName = 'cp4724_carrental';
+DB::$user = 'cp4724_carrental';
+DB::$password = 'DLGbPGKfpby5FW5s';
+}
 DB::$encoding = 'utf8'; // defaults to latin1 if omitted
 DB::$error_handler = 'sql_error_handler';
 DB::$nonsql_error_handler = 'nonsql_error_handler';
