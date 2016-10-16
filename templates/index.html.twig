@@ -19,19 +19,8 @@
       <span class="button nextButton"></span>
 </div>
 </center> 
-
- <!--     
-<div id="nav"  style="max-width:100%">
-  <img class="mySlides" src="/pics/scenery1.jpg" width="100%" height="350">
-  <img class="mySlides" src="/pics/scenery2.jpg" width="100%" height="350">
-  <img class="mySlides" src="/pics/scenery3.jpg" width="100%" height="350">
-  <img class="mySlides" src="/pics/scenery4.jpg" width="100%" height="350">
-  <img class="mySlides" src="/pics/scenery5.jpg" width="100%" height="350">
-  <img class="mySlides" src="/pics/scenery6.jpg" width="100%" height="350">
-  <img class="mySlides" src="/pics/scenery7.jpg" width="100%" height="350">  
-</div>
- -->    
-   <h1>Welcome to ASFAR CarRental</h1><h4> (Travel AS FAR as you want to go..)</h4><br>
+  
+   
 <script src="../jquery-1.4.2.min.js"></script>
 
 <script>
@@ -108,7 +97,11 @@ $(window).load(function(){
 
 </script>
 
-
+<h1>Welcome to ASFAR CarRental</h1><h4> (Travel AS FAR as you want to go..)</h4><br>
+{% if user %}
+    <p id="para">Hello {{user.name}}, please select a car type below, or click here to <a href="/reservation">continue to Reservation Page</a>.<br>
+    OR <a href="/logout">logout</a></p>
+    {% endif %}
 
 <!--
 <script>
@@ -130,6 +123,7 @@ function carousel() {
 -->
 
 {% if sessionUser %}
+    
     <p id="para">Hello {{sessionUser.name}},
         please select a car type below, or click here to <a href="/reservation">continue to Reservation Page</a>.<br>
     OR <a href="/logout">logout</a></p>

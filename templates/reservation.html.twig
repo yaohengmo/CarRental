@@ -60,48 +60,6 @@
         {% endfor %}
         
         </table>
-    <!--
-            <tr>
-                <td class="row1A"><img height=300 src="/pics/{{ product.imagePath }}"></td class="row1B"><td><div id="displayList">               
-                <h3>{{product.makeModel}}</h3><br>
-            <p>{{product.description}}</p>
-            <p>Price per day: {{product.rate}}</p>
-            <form method="POST" action="/cart">
-                Add to cart
-                <input type="hidden" name="carID" value="{{product.ID}}">
-                <input type="number" name="quantity" value="1" style="width:30px;">
-                <input type="submit" value="Add to cart">
-            </form>           
-            </div></td>
-            </tr>
-            <tr>
-                <td class="row1A"><img height=300 src="/pics/{{ product.imagePath }}"></td class="row1B"><td>ddddd</td>
-            </tr>
-            <tr>
-                <td class="row1A"><img height=300 src="/pics/{{ product.imagePath }}"></td class="row1B"><td>ddddd</td>
-            </tr>        
-        
-
-{% for product in productList %}
-        <hr>        
-        <div>                   
-            <img height=300 src="/pics/{{ product.imagePath }}">
-
-            <div id="displayList">               
-                <h3>{{product.makeModel}}</h3><br>
-            <p>{{product.description}}</p>
-            <p>Price per day: {{product.rate}}</p>
-            <form method="POST" action="/cart">
-                Add to cart
-                <input type="hidden" name="carID" value="{{product.ID}}">
-                <input type="number" name="quantity" value="1" style="width:30px;">
-                <input type="submit" value="Add to cart">
-            </form>           
-            </div>
-                
-        </div>
-               
-    {% endfor %}
-    -->
+    
     
 {% endblock %}
