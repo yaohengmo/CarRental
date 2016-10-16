@@ -21,12 +21,15 @@
                 <ul id="navbar-nav">
                     {% if user %}
                     <li>
+                        <a href="/cart"><img id="cart" src="/pics/cart3.png" width="25" alt="cart"></a>
+                    </li>    
+                    <li>
                         <a href="/">Home</a>
                     </li>                    
                     <li>                       
                         <a href="/logout">Logout</a>                      
                     </li> 
-                    {% else %}
+                    {% else %}     
                     <li>
                         <a href="/login">Login</a>
                     </li> 

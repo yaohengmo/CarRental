@@ -77,7 +77,7 @@ $app->get('/cart', function() use ($app) {
     $cartitemList = DB::query(
                     "SELECT cartitems.ID as ID, productID, quantity,"
                     . " makeModel, description, imagePath, rate "
-                    . " FROM cartitems, cars "
+                    . " FROM cartitems, products "
                     . " WHERE cartitems.productID = cars.ID AND sessionID=%s", session_id());
     $app->render('cart.html.twig', array(
         'cartitemList' => $cartitemList
@@ -107,7 +107,7 @@ $app->post('/cart', function() use ($app) {
                     "SELECT cartitems.ID as ID, productID, quantity,"
                     . " makeModel, description, imagePath, rate "
                     . " FROM cartitems, cars "
-                    . " WHERE cartitems.productID = products.ID AND sessionID=%s", session_id());
+                    . " WHERE cartitems.productID = cars.ID AND sessionID=%s", session_id());
     $app->render('cart.html.twig', array(
         'cartitemList' => $cartitemList
     ));
@@ -125,9 +125,9 @@ $app->get('/cart/update/:cartitemID/:quantity', function($cartitemID, $quantity)
 // order handling
 $app->map('/order', function () use ($app) {
     $totalBeforeTax = DB::queryFirstField(
-                    "SELECT SUM(products.price * cartitems.quantity) "
-                    . " FROM cartitems, products "
-                    . " WHERE cartitems.sessionID=%s AND cartitems.productID=products.ID", session_id());
+                    "SELECT SUM(cars.rate * cartitems.quantity) "
+                    . " FROM cartitems, cars "
+                    . " WHERE cartitems.sessionID=%s AND cartitems.productID=cars.ID", session_id());
     // TODO: properly compute taxes, shipping, ...
     
     $taxes = ($totalBeforeTax * 0.15);
@@ -170,7 +170,7 @@ $app->map('/order', function () use ($app) {
                 DB::startTransaction();
                 // 1. create summary record in 'orders' table (insert)
                 DB::insert('orders', array(
-                    'userID' => $_SESSION['user'] ? $_SESSION['user']['ID'] : NULL,
+                    'customerID' => $_SESSION['user'] ? $_SESSION['user']['ID'] : NULL,
                     'name' => $name,
                     'address' => $address,
                     'postalCode' => $postalCode,
@@ -184,9 +184,9 @@ $app->map('/order', function () use ($app) {
                 $orderID = DB::insertId();
                 // 2. copy all records from cartitems to 'orderitems' (select & insert)
                 $cartitemList = DB::query(
-                                "SELECT productID as origProductID, quantity, price"
-                                . " FROM cartitems, products "
-                                . " WHERE cartitems.productID = products.ID AND sessionID=%s", session_id());
+                                "SELECT productID as origProductID, quantity, rate"
+                                . " FROM cartitems, cars "
+                                . " WHERE cartitems.productID = cars.ID AND sessionID=%s", session_id());
                 // add orderID to every sub-array (element) in $cartitemList
                 array_walk($cartitemList, function(&$item, $key) use ($orderID) {
                     $item['orderID'] = $orderID;

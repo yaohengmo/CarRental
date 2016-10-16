@@ -79,7 +79,7 @@ li a {
     padding: 0;
     width: 25%;
     float: left; 
-   // background-color: cce5ff;    
+     
 }
 h1 {
     margin: auto;
@@ -138,7 +138,6 @@ button {
     padding: 0;
     margin: auto;
     width: 90%;
-   // background-color: cce5ff;
 }
 .img-logo {
     margin-left: 300px;
@@ -163,6 +162,15 @@ button {
     background-color: #9bbae8;
 }
 #logintoppanel {
+    width: 50%;
+    height: 220px;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin: auto;
+    margin-top: 100px;    
+    background-color: #9bbae8;
+}
+#toppanel {
     width: 50%;
     height: 220px;
     border: 1px solid black;
@@ -236,9 +244,6 @@ button {
 }
 table {
     margin-top: 70px;
-  //  background-color: #9bbae8;    
-  //  border: 1px solid black;
- //   border-radius: 15px;
 }
 
 .row1B {
@@ -254,7 +259,7 @@ table {
    color: navy;
 }
 table tr {
-    //background-color: #9bbae8;
+   
 }
 .row1A {
     padding-left: 100px;
