@@ -1,0 +1,18 @@
+{% extends "master.html.twig" %}
+
+{% block title %}Password reset{% endblock %}
+
+{% block content %}
+    <h1>Password Reset</h1>
+    <br>
+    {% if error %}
+        <p><b>We couldn't find email you provided in our system.
+                Try again or <a href="/register">register</a> a new account</b></p>
+    {% endif %}
+    <div id="logintoppanel">
+    <form method="POST">
+        <div id="email">Enter your email: <input type="email" name="email"></div><br>
+        <div id="email"><input type="submit" value="Request password reset"></div>
+    </form>
+    </div>
+{% endblock %}

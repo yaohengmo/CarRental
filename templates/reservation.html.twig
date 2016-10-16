@@ -1,6 +1,7 @@
 {% extends "master.html.twig" %}
 
 {% block title %}Reservation Page{% endblock %}
+
 {% block head %}
     <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -16,133 +17,91 @@
     } );
     </script>
     {% endblock %}
+    
 {% block content %}
     
-            
-<h1 id="title">Reservation Page</h1>
-
-{% if errorList %}
-    <ul>
-    {% for error in errorList %}
-        <li>{{ error }}</li>
-    {% endfor %}
-    </ul>
-{% endif %}
-
-
-
-
-<div id="toppanel">
+    {% if user %}
+    <p id="para">Hello {{user.name}},
+    {% endif %}  
+    <br><br>
+    <h1>Select your dates, location and choose a car from our inventory</h1><br><br>
+    
+    <div id="toppanelReservation">
     <h4 class=datepicker>PICKUP DATE:</h4><input id="dp" class="datepicker" type="text" name="pickupDate" value="{{v.pickupDate}}">
     <span id="result"></span>
-    <h4 class=datepicker>RETURN DATE:</h4><input id="dp" class="datepicker" type="text" name="returnDate" value="{{v.returnDate}}">
+    <h4 class=datepicker>RETURN DATE:</h4><input id="dp2" class="datepicker" type="text" name="returnDate" value="{{v.returnDate}}">
     <h4 class=datepicker>LOCATION:</h4> 
     <select id="selectlocation">
         <option value="dorval">Dorval</option>
         <option value="ndg">NDG</option>
         <option value="laval">Laval</option>
         <option value="westmount">Westmount</option>
-    </select><br><br>
-    
+    </select><br><br>    
 </div>
-      
-    <div id="centercolumn">
-         <div class="row">
-            <div class="col-md-7">
-                <h2>Economy - $24.99/day</h2>
-                <h3>Kia Rio or similar</h3><br>
-                <a href="/pics/kiario.png">
-                    <img class="img-responsive" src="/pics/kiario.png" width="250" height="170" alt="kia Rio">
-                </a>
-            </div>
-            <div class="col-md-5">          
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium veniam exercitationem expedita laborum at voluptate. Labore, voluptates totam at aut nemo deserunt rem magni pariatur quos perspiciatis atque eveniet unde.</p>
-                <a href="/reservation_success"><button >SELECT</button></a>
-                <!--<input type="button" class="btnSelect" href="#">Select<span class="glyphicon glyphicon-chevron-right"></span></a>-->
-            </div>
-        
-         <!-- /.row -->
-         <hr>
 
-        <!-- Intermediate -->    
-            <div class="col-md-7">
-                <h2>Intermediate - $32.99/day</h2>
-                <h3>Hyundai Elantra or similar</h3>
-                <a href="/pics/elantra_intermed.png">
-                    <img class="img-responsive" src="/pics/elantra_intermed.png" width="250" height="170" alt="Hyudai Elantra">
-                </a>
-            </div>
-            <div class="col-md-5">            
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, odit velit cumque vero doloremque repellendus distinctio maiores rem expedita a nam vitae modi quidem similique ducimus! Velit, esse totam tempore.</p>
-                <a href="/reservation_success.html"><button>SELECT</button></a>
-            </div>
+    <table id="table" width="100%">
+        {% for product in productList %}
+            <tr>            
+                <td class="row1A"><img height=300 src="/pics/{{ product.imagePath }}">
+                </td>
+                <td class="row1B">               
+                    <h3 id="prodHeader">{{product.makeModel}}</h3><br><br>
+            <p>{{product.description}}</p>
+            <p>Price per day: {{product.rate}}</p>
+            <form method="POST" action="/cart">
+                Add to cart
+                <input type="hidden" name="carID" value="{{product.ID}}">
+                <input type="number" name="quantity" value="1" style="width:30px;">
+                <input type="submit" value="Add to cart">
+            </form>           
+            </td>            
+            </tr>
+            
+        {% endfor %}
         
-        <!-- /.row -->
-        <hr>
+        </table>
+    <!--
+            <tr>
+                <td class="row1A"><img height=300 src="/pics/{{ product.imagePath }}"></td class="row1B"><td><div id="displayList">               
+                <h3>{{product.makeModel}}</h3><br>
+            <p>{{product.description}}</p>
+            <p>Price per day: {{product.rate}}</p>
+            <form method="POST" action="/cart">
+                Add to cart
+                <input type="hidden" name="carID" value="{{product.ID}}">
+                <input type="number" name="quantity" value="1" style="width:30px;">
+                <input type="submit" value="Add to cart">
+            </form>           
+            </div></td>
+            </tr>
+            <tr>
+                <td class="row1A"><img height=300 src="/pics/{{ product.imagePath }}"></td class="row1B"><td>ddddd</td>
+            </tr>
+            <tr>
+                <td class="row1A"><img height=300 src="/pics/{{ product.imagePath }}"></td class="row1B"><td>ddddd</td>
+            </tr>        
+        
 
-        <!-- Full Size -->    
-            <div class="col-md-7">
-                <h2>Full size - $39.99/day</h2>
-                <h3>Nissan Altima</h3>
-                <a href="/pics/fullsizeAltima.png">
-                    <img class="img-responsive" src="/pics/fullsizeAltima.png" width="250" height="170" alt="">
-                </a>
-            </div>
-            <div class="col-md-5">            
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis, temporibus, dolores, at, praesentium ut unde repudiandae voluptatum sit ab debitis suscipit fugiat natus velit excepturi amet commodi deleniti alias possimus!</p>
-                <a href="/reservation_success.html"><button>SELECT</button></a>
-            </div>
-        
-        <!-- /.row -->
-        <hr>
+{% for product in productList %}
+        <hr>        
+        <div>                   
+            <img height=300 src="/pics/{{ product.imagePath }}">
 
-        <!-- SUV -->
-            <div class="col-md-7">
-                <h2>SUV - $55.99/day</h2>
-                <h3>Ford Edge or similar</h3>
-                <a href="/pics/FordEdge.png">
-                    <img class="img-responsive" src="/pics/FordEdge.png" width="250" height="170" alt="Ford Edge">
-                </a>
+            <div id="displayList">               
+                <h3>{{product.makeModel}}</h3><br>
+            <p>{{product.description}}</p>
+            <p>Price per day: {{product.rate}}</p>
+            <form method="POST" action="/cart">
+                Add to cart
+                <input type="hidden" name="carID" value="{{product.ID}}">
+                <input type="number" name="quantity" value="1" style="width:30px;">
+                <input type="submit" value="Add to cart">
+            </form>           
             </div>
-            <div class="col-md-5">   
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, quidem, consectetur, officia rem officiis illum aliquam perspiciatis aspernatur quod modi hic nemo qui soluta aut eius fugit quam in suscipit?</p>
-                <a href="/reservation_success.html"><button>SELECT</button></a>
-            </div>
-        
-        <!-- /.row -->
-        <hr>
-
-        <!-- Large SUV -->
-            <div class="col-md-7">
-                <h2>Large SUV - $65.99/day</h2>
-                <h3>Chevrolet Tahoe or similar</h3>
-                <a href="/pics/largeSUV.png">
-                    <img class="img-responsive" src="/pics/largeSUV.png" width="250" height="170" alt="Chevrolet Tahoe">
-                </a>
-            </div>
-            <div class="col-md-5">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, quo, minima, inventore voluptatum saepe quos nostrum provident ex quisquam hic odio repellendus atque porro distinctio quae id laboriosam facilis dolorum.</p>
-                <a href="/reservation_success"><button>SELECT</button></a>
-            </div>
-        
-        <!-- /.row -->
-        <hr>
-        
-        <!-- Minivan -->
-            <div class="col-md-7">
-                <h2>MiniVan - $75.99/day</h2>
-                <h3>Dodge Journey or similar</h3>
-                <a href="/pics/minivan.png">
-                    <img class="img-responsive" src="/pics/minivan.png" width="250" height="170" alt="Dodge Journey">
-                </a>
-            </div>
-            <div class="col-md-5">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, quo, minima, inventore voluptatum saepe quos nostrum provident ex quisquam hic odio repellendus atque porro distinctio quae id laboriosam facilis dolorum.</p>
-                <a href="/reservation_success"><button >SELECT</button></a>
-            </div>
+                
         </div>
-      
-    </div>
-{% endblock %}
-
+               
+    {% endfor %}
+    -->
     
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends "master.html.twig" %}
+
+{% block title %}Failed Reset{% endblock %}
+
+{% block content %}
+    
+<h1>Failed reset</h1>
+<div id="logintoppanel">
+    <div id="email"><p>Password reset token does not exist or has expired.</p></div>
+    <div id="email"><p>You may <a href="/passreset">request a new token</a>.</p></div>
+</div>
+<a href="/">Click to continue</a>
+
+{% endblock %}

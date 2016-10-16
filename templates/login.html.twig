@@ -3,22 +3,23 @@
 {% block title %}Login Page{% endblock %}
 
 {% block content %}
-    
-<h1>Login Page</h1>
 
-{% if loginFailed %}
-    <p>Invalid username or password</p>
-{% endif %}
+    <h1>Login Page</h1>
 
-<div id="logintoppanel">
-    <form method="post">
-        <div id="email">Email:</div><div id="loginemail"><input type="text" placeholder="Email" name="email"></div>
-        <div id="loginpwd">Password:<div id="loginpass"><input type="password" placeholder="Password" name="pass"></div></div>  
-        <div id="submitlogin"><input type="submit" value="Login"></div>  
-    </form>
+    {% if loginFailed %}
+        <p>Invalid username or password</p>
+    {% endif %}
+
+    <div id="logintoppanel">
+        <form method="post">
+            <div id="email">Email:</div><div id="loginemail"><input type="text" placeholder="Email" name="email"></div>
+            <div id="loginpwd">Password:<div id="loginpass"><input type="password" placeholder="Password" name="pass"></div></div>  
+            <div id="submitlogin"><input type="submit" value="Login"></div>  
+        </form>
     </div>
-</div>
 
+    <br>
+<p>If you forgot your password you can <a href="/passreset">reset it here</a>.</p>
 
 
 {% endblock %}

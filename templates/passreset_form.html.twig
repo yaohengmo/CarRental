@@ -1,0 +1,26 @@
+{% extends "master.html.twig" %}
+
+{% block title %}Password Reset{% endblock %}
+
+{% block content %}
+            
+<h1>Password Reset</h1>
+
+{% if errorList %}
+    <ul>
+    {% for error in errorList %}
+        <li>{{ error }}</li>
+    {% endfor %}
+    </ul>
+{% endif %}
+
+<p>Enter your new password below.</p>
+<div id="logintoppanel">
+<form method="post">
+
+    <div id="email">Password: <input type="password" name="pass1"></div><br>
+    <div id="email">Password (repeated) <input type="password" name="pass2"></div><br>
+    <div id="email"><input type="submit" value="Reset password"></div>
+</form>
+</div>
+{% endblock %}

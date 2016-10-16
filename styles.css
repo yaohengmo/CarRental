@@ -1,12 +1,12 @@
 body {
     margin-top: 200px;
-    background-color: #3399FF;
+    background-color: white; //#3399FF;
     width: 100%;
     margin: auto;    
 }
 
 #centerContent {   
-    width: 900px;
+    width: 1000px;
     display: block;
     padding: 0;
     margin: 0 auto;   
@@ -26,27 +26,33 @@ form {
 #nav {
     margin: auto;
     width: 100%;
-    background-color: black;
+    background-color: #100587;//#1a0da8;
     height: 200px; 
     padding-bottom: 100px;
 }
 #para {
     margin-top: 50px;
+    font-size: 1.3em;
 }
 
 .leftDiv {
-    width: 450px;
+    width: 500px;
     margin-top: 30px;
     float:left;
     margin-right: 10%;
     margin-bottom: 50px;
     font-size: 30px;
     text-align: center;
+     display: inline-block;
+     
 }
+
 .rightDiv {
-    width: 450px;
+   
+    width: 500px;
     margin-top: 30px;
-    float: left;
+    float: right;
+   display: inline-block;
     margin-right: 10%;
     margin-bottom: 50px;
     font-size: 30px;
@@ -103,6 +109,12 @@ h4 {
 #dp {
     display: inline-block;
     margin-top: 0;
+    font-size: 1.1em;
+}
+#dp2 {
+    display: inline-block;
+    margin-top: 0;
+    font-size: 1.1em;
 }
 .datepicker{
     display: inline-block;
@@ -131,9 +143,7 @@ button {
 .img-logo {
     margin-left: 300px;
 }
-#nav {
-    background-color: black;
-}
+
 #login {
     float: right;
 }
@@ -143,8 +153,8 @@ button {
     text-align: center; 
     margin-bottom: 50px;
 }
-#toppanel {
-    width: 97%;
+#toppanelReservation {
+    width: 100%;
     height: 220px;
     border: 1px solid black;
     border-radius: 10px;
@@ -220,12 +230,33 @@ button {
     margin-left: 5px;
     width: 215px;
 }
-#displayList {
-    float: right;
-    display: inline-block;
-    margin-left: 60px;
-    margin-top: 50px;
+
+#prodHeader {
+   font-size: 1.4em; 
 }
-#displayList p {
-    font-size: 1.2em;
+table {
+    margin-top: 70px;
+    background-color: #9bbae8; 
+    
+    border: 1px solid black;
+    border-radius: 15px;
+}
+
+.row1B {
+    width: 300px;
+    height: 200px;
+    float: left;
+    margin-bottom: 50px;
+    font-size: 1.3em;
+    padding-top: 15px;
+}
+.row1B h3{
+   float: left; 
+   color: navy;
+}
+table tr {
+    background-color: #9bbae8;
+}
+.row1A {
+    padding-left: 100px;
 }

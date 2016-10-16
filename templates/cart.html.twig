@@ -39,8 +39,8 @@
     <table border="1">
         {% for ci in cartitemList %}
             <tr id="itemrow{{ci.ID}}">
-                <td>{{ci.name}}</td>
-                <td>{{ci.price}}</td>
+                <td>{{ci.makeModel}}</td>
+                <td>{{ci.rate}}</td>
                 <td><button onclick="decrement({{ci.ID}})">-</button>
                     <input type="number" name="quantity{{ci.ID}}"
                            value="{{ci.quantity}}" style="width:30px;">

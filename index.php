@@ -154,7 +154,7 @@ $app->post('/login', function() use ($app, $log) {
             $_SESSION['user'] = $user;
             $log->debug(sprintf("User %s logged in successfuly from IP %s",
                     $user['ID'], $_SERVER['REMOTE_ADDR']));
-            $app->render('login_success.html.twig');
+            $app->render('/login_success.html.twig');
         } else {
             $log->debug(sprintf("User failed for email %s from IP %s",
                     $email, $_SERVER['REMOTE_ADDR']));
@@ -164,17 +164,111 @@ $app->post('/login', function() use ($app, $log) {
            
 });
 
-$app->get('/reservation', function() use ($app, $log) {
-    $app->render('reservation.html.twig');
-});
+
 
 // State 2: submission
-$app->get('/reserve2', function() use ($app, $log) {
-    $productList = DB::query("SELECT * FROM cars");
-    $app->render('reserve2.html.twig', array(
+$app->get('/reservation', function() use ($app, $log) {
+    $productList = DB::query("SELECT DISTINCT makeModel,imagePath,rate,description FROM cars");
+    $app->render('/reservation.html.twig', array(
         'productList' => $productList
     ));
 });
+
+
+$app->get('/cart', function() use ($app) {
+    $cartitemList = DB::query(
+                    "SELECT cartitems.ID as ID, productID, quantity,"
+                    . " makeModel, description, imagePath, rate "
+                    . " FROM cartitems, cars "
+                    . " WHERE cartitems.productID = cars.ID AND sessionID=%s", session_id());
+    $app->render('/cart.html.twig', array(
+        'cartitemList' => $cartitemList
+    ));
+});
+
+$app->post('/cart', function() use ($app) {
+    $productID = $app->request()->post('productID');
+    $quantity = $app->request()->post('quantity');
+    // FIXME: make sure the item is not in the cart yet
+    $item = DB::queryFirstRow("SELECT * FROM cartitems WHERE productID=%d AND sessionID=%s", $productID, session_id());
+    if ($item) {
+        DB::update('cartitems', array(
+            'sessionID' => session_id(),
+            'productID' => $productID,
+            'quantity' => $item['quantity'] + $quantity
+                ), "productID=%d AND sessionID=%s", $productID, session_id());
+    } else {
+        DB::insert('cartitems', array(
+            'sessionID' => session_id(),
+            'productID' => $productID,
+            'quantity' => $quantity
+        ));
+    }
+    // show current contents of the cart
+    $cartitemList = DB::query(
+                    "SELECT cartitems.ID as ID, productID, quantity,"
+                    . " makeModel, description, imagePath, rate "
+                    . " FROM cartitems, cars "
+                    . " WHERE cartitems.productID = cars.ID AND sessionID=%s", session_id());
+    $app->render('/cart.html.twig', array(
+        'cartitemList' => $cartitemList
+    ));
+});
+// PASSWORD RESET
+
+function generateRandomString($length = 50) {
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $charactersLength = strlen($characters);
+    $randomString = '';
+    for ($i = 0; $i < $length; $i++) {
+        $randomString .= $characters[rand(0, $charactersLength - 1)];
+    }
+    return $randomString;
+}
+$app->map('/passreset', function () use ($app, $log) {
+    // Alternative to cron-scheduled cleanup
+    if (rand(1,1000) == 111) {
+        // TODO: do the cleanup 1 in 1000 accessed to /passreset URL
+    }
+    if ($app->request()->isGet()) {
+        $app->render('passreset.html.twig');
+    } else {
+        $email = $app->request()->post('email');
+        $user = DB::queryFirstRow("SELECT * FROM customers WHERE email=%s", $email);
+        if ($user) {
+            $app->render('passreset_success.html.twig');
+            $secretToken = generateRandomString(50);
+            // VERSION 1: delete and insert
+            /*
+              DB::delete('passresets', 'userID=%d', $user['ID']);
+              DB::insert('passresets', array(
+              'userID' => $user['ID'],
+              'secretToken' => $secretToken,
+              'expiryDateTime' => date("Y-m-d H:i:s", strtotime("+5 hours"))
+              )); */
+            // VERSION 2: insert-update TODO
+            DB::insertUpdate('passresets', array(
+                'customerID' => $user['ID'],
+                'secretToken' => $secretToken,
+                'expiryDateTime' => date("Y-m-d H:i:s", strtotime("+2 hours"))
+            ));
+            // email user
+            $url = 'http://' . $_SERVER['SERVER_NAME'] . '/passreset/' . $secretToken;
+            $html = $app->view()->render('email_passreset.html.twig', array(
+                'name' => $user['name'],
+                'url' => $url
+            ));
+            $headers = "MIME-Version: 1.0\r\n";
+            $headers.= "Content-Type: text/html; charset=UTF-8\r\n";
+            $headers.= "From: Noreply@ASFAR_CarRental <noreply@ipd8.info>\r\n";
+            $headers.= "To: " . htmlentities($user['name']) . " <" . $email . ">\r\n";
+
+            mail($email, "Password reset from ASFAR Car Rentals", $html, $headers);
+        } else {
+            $app->render('passreset.html.twig', array('error' => TRUE));
+        }
+    }
+})->via('GET', 'POST');
 /*
 $app->post('/reservation', function() use ($app, $log) {
     $carType = $app->request->post('carType');
